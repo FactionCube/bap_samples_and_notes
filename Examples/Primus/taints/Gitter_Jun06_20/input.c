@@ -1,6 +1,7 @@
 // file input.c
 // gcc -g input.c -o input
-//
+// This is Ivan Gotovchit's example code from the BAP Gitter site.  
+// See Ivan's primus_taint.md discussion in a parent folder.
 #include <stdio.h>
 
 int global_variable = 0;
