@@ -1,4 +1,5 @@
 A taint example from gitter:
+You can find these notes here:  https://gitter.im/BinaryAnalysisPlatform/bap
 
 Ivan Gotovchits
 @ivg
