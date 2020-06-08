@@ -1,3 +1,5 @@
+You can find further info here:  BAP Gitter https://gitter.im/BinaryAnalysisPlatform/bap
+
 You can get some useful lisp documention as so:
 
 `bap /bin/true --primus-lisp-documentation`

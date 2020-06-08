@@ -1,3 +1,5 @@
+https://gitter.im/BinaryAnalysisPlatform/bap
+
 Another example from gitter:
 
 Ivan Gotovchits
