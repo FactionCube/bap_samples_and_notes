@@ -123,7 +123,6 @@ primitives and signals available for our binary could be obtained using the
 $ bap input --primus-lisp-documentation  | grep taint-introduce-directly -A1
 ```
 
-** ~taint-introduce-directly~
 (taint-introduce-directly K X) introduces a new taint of the
 kind K that is directly associated with the value X
 
@@ -133,7 +132,6 @@ and
 $ bap input --primus-lisp-documentation  | grep loaded
 ```
 
-** ~loaded~
 (loaded A X) is emitted when X is loaded from A
 
 Ok, now it looks like that we are good to go. We need to load our lisp file (which we will name track.lisp),
