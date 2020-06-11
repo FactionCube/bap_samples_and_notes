@@ -1,6 +1,7 @@
 June 10, 2020
 @ivg - Ivan Gotovchits code from Gitter BAP.
 
+```
 $ cat example.c
 #include <stdlib.h>
 
@@ -25,5 +26,5 @@ $ cat taint-malloc.lisp
 $ bap example --primus-lisp-load=taint-malloc --run --primus-print-obs=call,taint-attached | grep -B1 free
 (taint-attached (Direct 1 0x201028:64u#1833))
 (call (free 0x201028))
-
+```
 
