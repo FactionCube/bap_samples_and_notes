@@ -1,6 +1,7 @@
 A taint example from gitter:
-You can find these notes here:  https://gitter.im/BinaryAnalysisPlatform/bap
-All of the following text is directly from Ivan's conversation on Gitter.
+You can find these notes here:  https://gitter.im/BinaryAnalysisPlatform/bap.  
+
+All of the text below is directly from Ivan's conversation on Gitter.
 
 Ivan Gotovchits
 @ivg
