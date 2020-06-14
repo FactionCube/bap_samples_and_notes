@@ -7,19 +7,17 @@ open Core_kernel
 
 let foo = Project.available_readers ()
 
-``` val foo : Project.info list =
-  [("marshal", `Ver "2.0.0", Some "OCaml standard marshaling format")] ```
+(* val foo : Project.info list = [("marshal", `Ver "2.0.0", Some "OCaml standard marshaling format")] *)
 
 let foo = Project.Input.available_loaders ()
 
-`val foo : string list = ["raw"; "llvm"; "bap-elf"]`
+(* val foo : string list = ["raw"; "llvm"; "bap-elf"] *)
 
 let proj = Project.Input.file ~loader:"llvm" ~filename:"/home/user/VENGEUR/Documents/BAP/BAP_2/first_lisp/inprint" |> Project.create |> ok_exn;;
 (* val proj : project = <abstr>  *)
 
 let prog = Project.program proj;;
 (*
-```
 val prog : program term = 000007d6: program
 000007bf: sub .plt()
 000000a6: 
@@ -515,21 +513,17 @@ $2 >> 1 ^ $2]
 00000705: RSP := RSP + 8
 0000070c: RDI := 0x601030
 00000714: call RAX with noreturn
-```
 *)
 
 let mem = Project.memory proj;;
 (*
-```
 val mem : value memmap =
   {[0x400000 - 0x4006C7] => 02 0x400000 1736, [0x400238 - 0x400253] => .interp, [0x400254 - 0x400273] => .note.ABI-tag, [0x400278 - 0x400293] => .gnu.hash, [0x400298 - 0x4002F7] => .dynsym, [0x4002F8 - 0x400336] => .dynstr, [0x400338 - 0x40033F] => .gnu.version, [0x400340 - 0x40035F] => .gnu.version_r, [0x400360 - 0x40038F] => .rela.dyn, [0x400390 - 0x4003A7] => .rela.plt, [0x4003A8 - 0x4003BE] => (), [0x4003C0 - 0x4003DF] => (), [0x4003E0 - 0x400571] => (), [0x400574 - 0x40057C] => (), [0x4003A8 - 0x4003BE] => .init, [0x4003C0 - 0x4003DF] => .plt, [0x4003E0 - 0x40040A] => _start, [0x4003E0 - 0x40040A] => _start 0x4003E0 43, [0x400410 - 0x400411] => _dl_relocate_static_pie, [0x400410 - 0x400411] => _dl_relocate_static_pie 0x400410 2, [0x4003E0 - 0x400571] => .text, [0x4004D0 - 0x4004FC] => main, [0x4004D0 - 0x4004FC] => main 0x4004D0 45, [0x400500 - 0x400564] => __libc_csu_init, [0x400500 - 0x400564] => __libc_csu_init 0x400500 101, [0x400570 - 0x400571] => __libc_csu_fini, [0x400570 - 0x400571] => __libc_csu_fini 0x400570 2, [0x400574 - 0x40057C] => .fini, [0x400580 - 0x400587] => .rodata, [0x400588 - 0x4005C3] => .eh_frame_hdr, [0x4005C8 - 0x4006C7] => .eh_frame, [0x600E10 - 0x60102F] => 03 0x600E10 552, [0x600E10 - 0x600E17] => .init_array, [0x600E18 - 0x600E1F] => .fini_array, [0x600E20 - 0x600FEF] => .dynamic, [0x600FF0 - 0x600FFF] => .got, [0x601000 - 0x60101F] => .got.plt, [0x601020 - 0x60102F] => .data}
-```
 *)
 
 let subs = Term.enum sub_t prog;;
 
 (*
-```
 val subs : sub term seq = {000007bf: sub .plt()
 000000a6: 
 000000ad: #11 := mem[0x601008, el]:u64
@@ -1027,7 +1021,6 @@ $2 >> 1 ^ $2]
 
 
 }
-```
 *)
 
 (*
@@ -1051,14 +1044,14 @@ let find_section_by_name name fproj =
 
 let section = find_section_by_name ".rodata" proj;;
 
-(* `val section : mem option = Some 400580: 01 00 02 00 66 6f 6f 00` *)
+(* val section : mem option = Some 400580: 01 00 02 00 66 6f 6f 00 *)
 let section = find_section_by_name ".bss" proj;;
 
-(* `val section : mem option = None` *)
+(* val section : mem option = None *)
 
 let section = find_section_by_name ".text" proj;;
 
-(* ```val section : mem option =
+(* val section : mem option =
   Some
 004003E0  31 ED 49 89 D1 5E 48 89 E2 48 83 E4 F0 50 54 49 |1.I..^H..H...PTI|
 004003F0  C7 C0 70 05 40 00 48 C7 C1 00 05 40 00 48 C7 C7 |..p.@.H....@.H..|
@@ -1086,5 +1079,5 @@ let section = find_section_by_name ".text" proj;;
 00400550  01 48 39 DD 75 EA 48 83 C4 08 5B 5D 41 5C 41 5D |.H9.u.H...[]A\A]|
 00400560  41 5E 41 5F C3 90 66 2E 0F 1F 84 00 00 00 00 00 |A^A_..f.........|
 00400570  F3 C3                                           |..              |
-``` *)
+ *)
 ;;
