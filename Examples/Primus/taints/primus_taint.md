@@ -50,11 +50,14 @@ $ bap primus-systems | grep taint
 - bap:taint-analyzer:
   Uses promiscuous-executor for taint analysis.
   Propagates taint by computation.
+
 - bap:exact-taint-analyzer:
   Uses promiscuous-executor for taint analysis.
   Propagates taint exactly.
+
 - bap:reflective-taint-analyzer:
   A taint analyzer that reflects taints to/from BIR terms
+
 - bap:base-taint-analyzer:
   Uses promiscuous-executor for taint analysis.
 ```
