@@ -1,15 +1,18 @@
 
 (* So this works well enough in utop.  *)
 
-open Bap.Std;;
-open Core_kernel;;
 
-let foo = Project.available_readers ();;
-(* val foo : Project.info list =
-  [("marshal", `Ver "2.0.0", Some "OCaml standard marshaling format")]  *)
+open Bap.Std
+open Core_kernel
 
-let foo = Project.Input.available_loaders ();;
-(* val foo : string list = ["raw"; "llvm"; "bap-elf"]  *)
+let foo = Project.available_readers ()
+
+``` val foo : Project.info list =
+  [("marshal", `Ver "2.0.0", Some "OCaml standard marshaling format")] ```
+
+let foo = Project.Input.available_loaders ()
+
+`val foo : string list = ["raw"; "llvm"; "bap-elf"]`
 
 let proj = Project.Input.file ~loader:"llvm" ~filename:"/home/user/VENGEUR/Documents/BAP/BAP_2/first_lisp/inprint" |> Project.create |> ok_exn;;
 (* val proj : project = <abstr>  *)
