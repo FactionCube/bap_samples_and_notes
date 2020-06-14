@@ -101,21 +101,9 @@ $2 >> 1 ^ $2]
 00000775: #81 := RSP
 00000778: RSP := RSP - 8
 0000077b: CF := #81 < 8
-0000077e: OF := high:1[(#81 ^ 8) & (#81 ^ RSP)]
-00000781: AF := 0x10 = (0x10 & (RSP ^ #81 ^ 8))
-00000784: PF := ~low:1[let $1 = RSP >> 4 ^ RSP in let $2 = $1 >> 2 ^ $1 in
-$2 >> 1 ^ $2]
-00000787: SF := high:1[RSP]
-0000078a: ZF := 0 = RSP
-00000798: #84 := RSP
-0000079b: RSP := RSP + 8
-0000079e: CF := RSP < #84
-000007a1: OF := ~high:1[#84] & (high:1[#84] | high:1[RSP]) & ~(high:1[#84] & high:1[RSP])
-000007a4: AF := 0x10 = (0x10 & (RSP ^ #84 ^ 8))
-000007a7: PF := ~low:1[let $1 = RSP >> 4 ^ RSP in let $2 = $1 >> 2 ^ $1 in
-$2 >> 1 ^ $2]
-000007aa: SF := high:1[RSP]
-000007ad: ZF := 0 = RSP
+
+   etc - removed to save space
+
 000007b6: #87 := mem[RSP, el]:u64
 000007b9: RSP := RSP + 8
 000007bd: call #87 with noreturn
@@ -325,11 +313,17 @@ let find_section_by_name name fproj =
         Option.(Value.get Image.section x >>= fun n ->
                 Option.some_if (n = name) m)) 
 
+(* printme will print what appears in the val output. *)
+let printme mem_section = 
+  match mem_section with
+   | Some mem -> Format.printf "\n%a\n" Memory.pp mem
+   | None -> Format.printf "No memory for this section\n"
 
 
 let section = find_section_by_name ".rodata" proj;;
 
 (* val section : mem option = Some 400580: 01 00 02 00 66 6f 6f 00 *)
+
 let section = find_section_by_name ".bss" proj;;
 
 (* val section : mem option = None *)
@@ -365,4 +359,5 @@ let section = find_section_by_name ".text" proj;;
 00400560  41 5E 41 5F C3 90 66 2E 0F 1F 84 00 00 00 00 00 |A^A_..f.........|
 00400570  F3 C3                                           |..              |
  *)
+
 ;;
