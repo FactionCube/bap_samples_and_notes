@@ -1,5 +1,6 @@
+`$ bap objdump /bin/echo --show-insn=adt,asm | head -n 10`
+
 ```
-$ bap objdump /bin/echo --show-insn=adt,asm | head -n 10
 SUB64ri8(Reg("RSP"), Reg("RSP"), Imm(0x8), Props())
 subq $0x8, %rsp
 MOV64rm(Reg("RAX"), Reg("RIP"), Imm(0x1), Reg("Nil"), Imm(0x206bcd), Reg("Nil"), Props(:load))
