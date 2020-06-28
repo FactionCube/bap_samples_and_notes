@@ -67,6 +67,8 @@ let print_str with_address =
       then printf "%s: %s@\n" (Addr.string_of_value addr) str
       else printf "%s@\n" str)
 
+
+(* Not sure why, but these next two are not working. *)
 (* Print strings for each address in the memory map. *)
 let dd_it = Addr.Map.iteri dd ~f:(fun ~key:k ~data:d -> printf "%s %s\n" (Addr.string_of_value k) d)
 
@@ -77,6 +79,26 @@ let ss = Addr.Map.keys dd_it;;
  * val ss : word list =
   [0x400238; 0x4002F9; 0x400303; 0x40030A; 0x40031C; 0x400328; 0x400510;
    0x400517; 0x40056A; 0x400594; 0x400657]
+*)
+
+(* But this guy works. *)
+let dd_it = Addr.Map.iteri result ~f:(fun ~key:k ~data:d -> printf "%s %s\n" (Addr.string_of_value k) d);;
+(*
+400238 /lib64/ld-linux-x86-64.so.2
+  4002f9 libc.so.6
+  400303 printf
+  40030a __libc_start_main
+  40031c GLIBC_2.2.5
+  400328 __gmon_start__
+  4003c1 5B
+  4003c7 %D
+  4003d1 %B
+  400510 AWAVI
+  400517 AUATL
+  40056a []A\A]A^A_
+  400594 Spong
+  400657 ;*3$"
+  val dd_it : unit = ()
 *)
 
 let ans = Addr.Map.find_exn dd_it (List.nth_exn ss 9);;
