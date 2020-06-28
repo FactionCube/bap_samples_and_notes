@@ -1,4 +1,4 @@
-'''
+```
 $ bap objdump /bin/echo --show-insn=adt,asm | head -n 10
 SUB64ri8(Reg("RSP"), Reg("RSP"), Imm(0x8), Props())
 subq $0x8, %rsp
@@ -10,4 +10,4 @@ JE_1(Imm(0x2), Props(:jump, :cond, :affect-control-flow))
 je 0x2
 CALL64r(Reg("RAX"), Props(:jump, :indirect, :call, :affect-control-flow, :store))
 callq *%rax
-'''
+```
