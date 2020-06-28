@@ -5,6 +5,12 @@ open Bap_main
 open Bap.Std
 open Bap_strings.Std
 
+(* My motivation for this example was to consider how I might get the 
+ * string argument of a simple printf("Spong\n") statement, which I 
+ * can see in the BIL as pulling the string from address 0x400594.
+ * It isn't finished yet.
+ *)
+
 let file_input_proj = Project.Input.file ~loader:"llvm" ~filename:
 "/home/user/VENGEUR/Documents/BAP_Studies/CWE78/lisp/prn" |> Project.create |> ok_exn
 
