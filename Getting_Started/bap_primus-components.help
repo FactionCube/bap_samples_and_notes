@@ -1,0 +1,121 @@
+- bap:mem-randomizer:
+  [generic]
+  Randomizes process memory.
+
+- bap:load-binary:
+  [generic]
+  Links the binary program into the Primus machine. All symbols of the binary
+  program are linked weakly, i.e., if a symbol is already linked, then this
+  component will not override it.
+
+- bap:x86-registers-initializer:
+  [generic]
+  Intializes all x86/x86-64 registers to zero.
+
+- bap:var-randomizer:
+  [generic]
+  Randomizes registers.
+
+- bap:symbolic-computer:
+  [generic]
+  Computes a symbolic formula for each Primus value.
+
+- bap:symbolic-path-constraints:
+  [generic]
+  tracks the path constraint and records them in the machine's symbolic
+  context
+
+- bap:load-lisp-library:
+  [generic]
+  Loads the Primus Library. Links all functions defined as external into the
+  Primus Machine. Symbols are assumed to be strong, i.e., if the symbol is
+  already linked, then it will be overriden by the corresponding Lisp
+  implemenetation
+
+- bap:constant-tracker:
+  [generic]
+  Tracks constants, using the following policy. A value is a static constant
+  if it was initialized from a constant value or computed from static
+  constant values.
+
+- bap:lisp-ieee754:
+  [generic]
+  Provides primitives for IEE754 floating-point arithemtic.
+
+- bap:symbolic-lisp-primitives:
+  [generic]
+  Provides assume and assert primitives.
+
+- bap:lisp-core:
+  [generic]
+  Initializes Primus Lisp core. Forwards Lisp message to the BAP log
+  subsystem and enables propagation of observations to signals.
+
+- bap:lisp-basic-io:
+  [generic]
+  Provides basic IO primitives to Primus Lisp.
+
+- bap:powerpc-init:
+  [generic]
+  Initializes PPC registers.
+
+- bap:lisp-incidents:
+  [generic]
+  Exposes the incident reporting facitilites to Primus Lisp.
+
+- bap:lisp-type-checker:
+  [generic]
+  Typechecks program and outputs the summary in the standard output.
+
+- bap:lisp-type-error-printer:
+  [generic]
+  Prints Primus Lisp type errors into the standard output.
+
+- bap:arg-randomizer:
+  [generic]
+  Randomizes output arguments of unbound procedures, as well
+  as prevents failures when such procedures are called by trapping
+  the unresolved handler.
+
+- bap:x86-setup-plt:
+  [generic]
+  Sets up PLT entries.
+
+- bap:constant-tracker-primitives:
+  [generic]
+  Exposes the constant tracker primitives to Primus Lisp.
+
+- bap:beagle-hunter:
+  [generic]
+  Monitors execution and detects data that looks like words from the provided
+  dictionary.
+
+- bap:lisp-dictionary:
+  [generic]
+  Provides a key-value storage for Primus Lisp programs. Dictionaries are
+  represented with symbols and it is a responsibility of user to prevent name
+  clashing between different dictionaries.
+
+- bap:lisp-primitives:
+  [generic]
+  Provides the core set of Primus Lisp primitives.
+
+- bap:symbolic-path-explorer:
+  [generic]
+  Computes a path constraint for each branch and forks a new machine if the
+  constraint is satisfiable.
+
+- bap:lisp-regions:
+  [generic]
+  Provides a set of operations to store and manipulate interval trees. The
+  module provides a persistent storage for intervals, denoted in the module
+  as regions, since these intervals often represent memory regions. Intervals
+  are stored in interval sets, that are implemented as efficient interval
+  tree data structures (using AVL trees underneath the hood). Each interval
+  set is denoted with a symbol, and it is possible to create arbitrary number
+  of sets, as well as move regions from one set to another.
+
+- bap:incident-location-recorder:
+  [generic]
+  Records tracepoints for incident reporting.
+

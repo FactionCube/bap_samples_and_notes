@@ -1,0 +1,235 @@
+- leave-phi:
+  Occurs after the given term is evaluated.
+
+- machine-kill:
+  Occurs after the given machine is killed.
+  Observations are in the restricted mode.
+
+- leave-pos:
+  Occurs after the given position is evaluated.
+
+- incident-new-class:
+  
+
+- concat:
+  Occurs on each concat operation.
+
+- stored:
+  Occurs after the value is stored at the address.
+
+- beagle-prey:
+  Occurs when the sequence of characters is detected.
+
+- pc-changed:
+  Occurs after the program counter is changed.
+
+- enter-jmp:
+  Occurs before the given term is evaluated.
+
+- call:
+  Occurs when the call is made.
+
+- enter-def:
+  Occurs before the given term is evaluated.
+
+- lisp-call:
+  Occurs when the call to Lisp code is made.
+
+- pagefault:
+  Occurs on pagefault.
+
+- leave-jmp:
+  Occurs after the given term is evaluated.
+
+- enter-sub:
+  Occurs before the given term is evaluated.
+
+- call-return:
+  Occurs when the call returns.
+
+- enter-pos:
+  Occurs before the given position is evaluated.
+
+- extract:
+  Occurs on each extract operation.
+
+- clock:
+  Occurs on each clock (operation) of the interpreter.
+
+- binop:
+  Occurs on each binary operation.
+
+- loaded:
+  Occurs after the given address is read.
+
+- leave-def:
+  Occurs after the given term is evaluated.
+
+- lisp-primitive:
+  Occurs when the Lisp primitive is invoked.
+
+- lisp-message:
+  Occurs with X when (msg x) is evaluated.
+
+- enter-phi:
+  Occurs before the given term is evaluated.
+
+- halting:
+  Occurs before the halt operation is posted.
+
+- system-stop:
+  Occurs after the system is stopped. Observations
+  are in the restricted mode
+
+- fini:
+  Occurs when machine finishes.
+
+- leave-top:
+  Occurs after the given term is evaluated.
+
+- bap:var-generated:
+  
+
+- leave-arg:
+  Occurs after the given term is evaluated.
+
+- incident-new-instance:
+  
+
+- cast:
+  Occurs on each cast.
+
+- interrupt:
+  Occurs before an interrupt.
+
+- undefined:
+  Occurs when an undefined value is created.
+
+- jumping:
+  Occurs before the jump to the given destination.
+
+- writing:
+  Occurs before the value is assigned to the variable.
+
+- lisp-call-return:
+  OCcurs when the call to Lisp code returns.
+
+- system-start:
+  Occurs after the system start.
+
+- machine-switch:
+  Occurs when machines are switched.
+
+- leave-sub:
+  Occurs after the given term is evaluated.
+
+- storing:
+  Occurs before the value is stored at the address.
+
+- memory-switch:
+  Occurs when the memory bank is switched.
+
+- assert-failure:
+  occurs when a symbolic executor assertion doesn't hold
+
+- exception:
+  Occurs just before the Machine exception is raised.
+
+- cfi-violation:
+  Occurs before the control flow violation is commited.
+
+- enter-top:
+  Occurs before the given term is evaluated.
+
+- bap:load-generated:
+  
+
+- beagle:
+  Occurs when the sequence of characters is classified as text.
+
+- linker-exec:
+  Occurs before code with the given name is executed.
+
+- segfault:
+  Occurs just before the segmentation fault.
+
+- ite:
+  Occurs on each ite expression.
+
+- init:
+  Occurs when all components of the machine are initialized.
+
+- read:
+  Occurs after the given variable is evaluated to the value.
+
+- enter-exp:
+  Occurs before the given exp is evaluated.
+
+- lisp-type-error:
+  Occurs when the Lisp type error is detected by the type checker
+
+- division-by-zero:
+  Occurs before the division by zero happens.
+
+- machine-fork:
+  Occurs after a machine fork is created.
+
+- executor-debug:
+  
+
+- enter-blk:
+  Occurs before the given term is evaluated.
+
+- incident-new-representative:
+  
+
+- unop:
+  Occurs on each unary operation.
+
+- random-debug:
+  
+
+- enter-arg:
+  Occurs before the given term is evaluated.
+
+- visited-blocks:
+  visited-blocks (visited,total) is posted every time a new basic block is
+  visited, where [visited] is the number of already visited blocks and
+  [total] is the total number of blocks in the program.
+
+- const:
+  Occurs on each constant.
+
+- reading:
+  Occurs before the given variable is read.
+
+- eval-cond:
+  Occurs when the jump condition is evaluated.
+
+- leave-exp:
+  Occurs after the given exp is evaluated.
+
+- leave-term:
+  Occurs after the given term is evaluated.
+
+- written:
+  Occurs after the value is assigned to the variable.
+
+- loading:
+  Occurs just before the given address is dereferenced.
+
+- enter-term:
+  Occurs before the given term.
+
+- incident-location:
+  Occurs when the location of a possible incident is created.
+
+- incident:
+  Occurs when the incident is reported that involves the given locations.
+
+- linker-unresolved:
+  Occurs when a linker hits the unresolved name.
+
+- leave-blk:
+  Occurs after the given term is evaluated.
+

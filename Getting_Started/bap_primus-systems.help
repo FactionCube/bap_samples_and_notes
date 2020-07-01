@@ -1,0 +1,51 @@
+- bap:legacy-main:
+  The legacy Primus system that contains all components registered with the
+  Machine.add_component function.
+
+- bap:string-deobfuscator:
+  Uses promiscuous-executor to find obfuscated strings.
+
+- bap:taint-analyzer:
+  Uses promiscuous-executor for taint analysis.
+  Propagates taint by computation.
+
+- bap:binary-executor:
+  Executes a binary program.
+
+- bap:exact-taint-analyzer:
+  Uses promiscuous-executor for taint analysis.
+  Propagates taint exactly.
+
+- bap:promiscuous-executor:
+  Executes all linearly independent paths and never fails.
+
+- bap:constant-tracker:
+  Uses promiscuous-executor for constant tracking.
+
+- bap:terminating-stubbed-executor:
+  Executes a binary together with the Lisp Machine that
+  is guaranteed to terminate.
+
+- bap:reflective-taint-analyzer:
+  A taint analyzer that reflects taints to/from BIR terms
+
+- bap:multi-analyzer:
+  Runs several analyses in parallel.
+
+- bap:symbolic-executor:
+  Uses symbolic execution to analyze all feasible and
+  linearly independent paths.
+
+- bap:microexecutor-base:
+  The base system for microexecution systems.
+
+- bap:stubbed-executor:
+  Executes a binary together with the Lisp Machine
+
+- bap:base-taint-analyzer:
+  Uses promiscuous-executor for taint analysis.
+  No policy is specified
+
+- bap:base-lisp-machine:
+  Executes Primus Lisp program.
+
