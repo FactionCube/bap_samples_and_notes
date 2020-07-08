@@ -804,4 +804,51 @@ let output_tag proj =
         | Some text -> if text = ".text" then Format.printf "  [%s]" text)
 ;;
 
+let dweeb = Memory.range mymem addr0 (Word.of_string "0x400587:32u") |> ok_exn;;
+(* val dweeb : mem = 400584: 66 6f 6f 00 *)
+
+# let str = Memory.str () dweeb;;
+(* val str : string = "400584: 66 6f 6f 00 " *)
+
+(* This function is taken from bap-plugins/strings/strings.ml. *)
+let read_string mem w =
+  let open Or_error.Monad_infix in
+  let (!) = Char.to_string in
+  Memory.view ~word_size:`r8 ~from:w mem >>= fun mem' ->
+  Memory.foldi ~word_size:`r8 mem' ~init:(false,"")
+    ~f:(fun addr word (fin,acc) ->
+        let char = Word.enum_chars word LittleEndian |> Seq.hd_exn in
+        match fin,char with
+        | (false,'\x00') -> (true,acc)
+        | (false,c) -> (false,acc^(!c))
+        | (true,c) -> (true,acc)) |> snd |> Or_error.return
+;;
+(* val read_string : mem -> word -> string Base.Or_error.t = <fun> *)
+
+let ss = read_string dweeb (Word.of_int32 0x400584l);;
+(* val ss : string Base.Or_error.t = Base__.Result.Ok "foo" *)
+
+let ss = read_string mymem (Word.of_int32 0x400584l);;
+(* val ss : string Base.Or_error.t = Base__.Result.Ok "foo" *)
+
+Memory.view ~word_size:`r32 ~from:(Word.of_int32 0x400584l) dweeb;;
+
+let view = Memory.view ~word_size:`r32 ~from:(Word.of_int32 0x400584l) dweeb;;
+(* val view : mem Or_error.t = Core_kernel__.Result.Ok 400584: 66 6f 6f 00 *)
+
+let view = Memory.view ~word_size:`r32 ~from:(Word.of_int32 0x400584l) mymem;;
+(* val view : mem Or_error.t = Core_kernel__.Result.Ok *)
+   00400584  66 6F 6F 00 01 1B 03 3B 3C 00 00 00 06 00 00 00 |foo....;<.......|
+00400594  38 FE FF FF 98 00 00 00 58 FE FF FF 58 00 00 00 |8.......X...X...|
+004005A4  88 FE FF FF 84 00 00 00 48 FF FF FF C0 00 00 00 |........H.......|
+004005B4  78 FF FF FF E0 00 00 00 E8 FF FF FF 28 01 00 00 |x...........(...|
+004005C4  00 00 00 00 14 00 00 00 00 00 00 00 01 7A 52 00 |.............zR.|
+
+let view = Memory.view ~word_size:`r32 ~from:(Word.of_int32 0x400584l) dweeb;;
+(* val view : mem Or_error.t = Core_kernel__.Result.Ok 400584: 66 6f 6f 00 *)
+
+let range = Memory.range mymem (Addr.of_string "0x400584:32u") (Addr.of_string "0x400594:32u") ;;
+(* val range : mem Or_error.t = Core_kernel__.Result.Ok *)
+   00400584  66 6F 6F 00 01 1B 03 3B 3C 00 00 00 06 00 00 00 |foo....;<.......|
+   00400594  38     etc .... till the end.
 
