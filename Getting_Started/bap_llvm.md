@@ -17,7 +17,10 @@ This command will output the llvm version. To further troubleshoot the llvm inst
 which outputs the full path to the llvm-config binary, which is the main provider of the llvm configuration.
 You can tell BAP which version to use:
 
-	opam config set llvm-config llvm-config-9
+	export LLVM_CONFIG=/usr/bin/llvm-config-10
+or
+	opam config set llvm-config llvm-config-10
+then run
 	opam reinstall conf-bap-llvm
 
 Then you can proceed with bap installation as normal, e.g., opam install bap.
