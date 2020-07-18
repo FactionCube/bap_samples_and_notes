@@ -9,6 +9,7 @@ The knowledge base is used by nearly all bap plugins and components either direc
 Ivan Gotovchits
 @ivg
 Jul 14 02:36
+
 To get an overall picture you can do `bap list classes`, it will show all classses and their public properties. Finding a corresponding OCaml slot to access the properties might be a bit tricky, but here are a few advice:
 
 1) Theory.Program is the OCaml interface to the `core-theory:program` class, which the main class in BAP, as it denotes programs and their semantics.
