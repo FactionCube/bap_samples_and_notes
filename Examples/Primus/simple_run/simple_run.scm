@@ -12,6 +12,8 @@
 (option log-dir log)
 
 (option primus-print-output incidents)
+(option primus-greedy-scheduler)
+
 (option primus-print-obs
 	call
 	incident
