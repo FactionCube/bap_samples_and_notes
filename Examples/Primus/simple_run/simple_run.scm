@@ -1,5 +1,5 @@
 
-(option run-entry-points main a b )
+(option run-entry-points b a )
 
 (option primus-lisp-channel-redirect
 	<stdin>:$prefix/stdin
