@@ -1,7 +1,10 @@
 Ivan Gotovchits
 @ivg
 Jul 13 23:51
-The knowledge base is used by nearly all bap plugins and components either directly or indirectly, e.g., just do `grep -re 'open Bap_knowledge\|open Bap_core_theory'` in the main repository to list them. You can also read this blog post to get a high-level picture. Basically, the whole interface distills to only three functions: collect, provide, and promise. With collect you read the properties, with provide you set them, and with promise you register a function that computes properties. And do not forget to read the documentation.
+
+The knowledge base is used by nearly all bap plugins and components either directly or indirectly, e.g., just do `grep -re 'open Bap_knowledge\|open Bap_core_theory'` in the main repository to list them. You can also read this blog* post to get a high-level picture. Basically, the whole interface distills to only three functions: collect, provide, and promise. With collect you read the properties, with provide you set them, and with promise you register a function that computes properties. And do not forget to read the documentation.
+
+* http://binaryanalysisplatform.github.io/knowledge-intro-1
 
 Ivan Gotovchits
 @ivg
