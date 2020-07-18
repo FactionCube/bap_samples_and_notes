@@ -37,6 +37,10 @@ let main prg termid =
   let subs = namer#run prg in
   printf "subs = %s\n" (Sub.name subs)
 
+  (* To string all attributes from a term, use 
+   * Term.with_attrs x Dict.empty 
+   * for all terms in a program, then use Term.visitor.
+   *)
 ;;
 
 
