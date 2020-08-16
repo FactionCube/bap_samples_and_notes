@@ -15,11 +15,11 @@ The final number in each of the above calls is the return value from running the
 
 and by replacing this line in `recipe.scm`
 
-	`(parameter entry-points all-subroutines "where to search")`
+	(parameter entry-points all-subroutines "where to search")
 
 with a specific call to your tailored `entry.lisp` function:
 
-	`(parameter entry-points entry-func0 "where to search")`
+	(parameter entry-points entry-func0 "where to search")
 
 The prototype for `func0()` needs to be specified in a header file, which you can see within `/api/func0.h`.
 
