@@ -21,6 +21,8 @@ with a specific call to your tailored `entry.lisp` function:
 
 	`(parameter entry-points entry-func0 "where to search")`
 
+The prototype for `func0()` needs to be specified in a header file, which you can see within `/api/func0.h`.
+
 Now, when you run bap as above, the `incidents` file shows the supplied parameter values as appear in the `entry.lisp` file.
 
 ```
