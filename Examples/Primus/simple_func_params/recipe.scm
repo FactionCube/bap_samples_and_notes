@@ -7,7 +7,7 @@
 
 (option primus-lisp-load
   posix
-;;  entry
+  entry
 )
 
 (option primus-lisp-add "./lisp_files")
