@@ -97,8 +97,11 @@ The most interesting are:
 
 
 `--passes=run` - enables the run pass, which will run the program using Primus;
+
 `--primus-print-output=incidents` - designates the name of the file where all observations are stored;
-`--primus-greedy-scheduler` together with --primus-promiscuous-mode enables forced execution;
-`--primus-lisp-load=posix,memcheck-malloc,limit-malloc,taint-sources,sensitive-sinks,warn-unused,check-hardcoded-values` - designates the set of Primus Lisp files to load. This is the most important thing for you as you can add or remove files here. For example, you can put the code examples above in a file named track-read.lisp and then do --primus-lisp-load=posix,track-read and then only your analysis will run. (We need to include the posix feature since we want to track the read(2) call).
+
+`--primus-greedy-scheduler` together with `--primus-promiscuous-mode` enables forced execution;
+
+`--primus-lisp-load=posix,memcheck-malloc,limit-malloc,taint-sources,sensitive-sinks,warn-unused,check-hardcoded-values` - designates the set of Primus Lisp files to load. This is the most important thing for you as you can add or remove files here. For example, you can put the code examples above in a file named `track-read.lisp` and then do `--primus-lisp-load=posix,track-read` and then only your analysis will run. (We need to include the posix feature since we want to track the read(2) call).
 
 I hope this helps, feel free to ask questions :)
