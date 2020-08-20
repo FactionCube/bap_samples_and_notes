@@ -10,8 +10,9 @@ program: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically lin
 
 so let's use bap to run it
 
+` $ bap program --run-argv=program,program.c -prun --primus-lisp-channel-redirect=program.c:program.c `
+
 ```
-$ bap program --run-argv=program,program.c -prun --primus-lisp-channel-redirect=program.c:program.c
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -58,12 +59,10 @@ beyond specifying obvious options, such as command-line arguments to the program
 
 When the program is run it outputs the contents of the file, the same if you will run it on a real cpu. Now, let's hack it using the following lisp program (and using bap instead of cat):
 
-```
-$ bap program --run-argv=program,program.c -prun --primus-lisp-channel-redirect=program.c:test.lisp
-(require posix)
-```
+` $ bap program --run-argv=program,program.c -prun --primus-lisp-channel-redirect=program.c:test.lisp `
 
 ```
+(require posix)
 (defmethod call-return (name _ buf len _)
   (when (and (= name 'read) (> len 0))
    (memset buf ?a len)))
@@ -78,4 +77,4 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ```
 That's all folks :)
 
-fyi, notation `?x` is the same as 'x' in C or OCaml :) 
+fyi, notation `?x` is the same as `x` in C or OCaml :) 
