@@ -1,0 +1,1 @@
+bap program --run-argv=program,program.c -prun --primus-lisp-channel-redirect=program.c:program.c
