@@ -44,3 +44,13 @@ In particular, this is how tainting is implemented. The tainting rules are defin
    (when (and ptr (= name 'malloc))
       (taint-introduce-directly 'mallocated-pointer ptr)))
 ```
+
+Ivan Gotovchits
+@ivg
+Apr 04 2019 00:52
+
+The `run` plugin is just a plugin, so you can implement your own runner. Besides, run is not responsible for forks (neither their creation, nor their scheduling or pruning). Therefore, by default it just sets up the machine selects the entry point and just runs.
+
+It is the `primus-promiscuous` plugin which is responsible for all this forks creation. So, ideally, you should create a plugin which will provide the `primus-trace-mode` which will accept a trace (or a set of traces) and will force the execution in the right direction. I would suggest you to look into the promiscuous mode implementation, as in fact, you need something very close, except that the promiscuous mode is forking a machine at every branch, where you instead can just force the only fork. On the high level, the idea is to hook the execution after each last definition in a block, then analyze all destinations, and pick the right one, by changing the guard variable (or destination variable, in case of the unresolved jump).
+
+However, if you would like to implement your own `run` plugin, then you can use the `run` plugin as an example of how you can set up the Primus Machine.
