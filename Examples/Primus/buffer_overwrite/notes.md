@@ -1,6 +1,7 @@
 The comparison is at 4012dc where you can capture the ZF (which is 1 on a match).
 
 Registers to print are:
+```
 4012d3 RSI
 4012dc RDI
 
@@ -13,9 +14,11 @@ Registers to print are:
 
 (pc-changed 0x4012DC:64u)
 (written (ZF 0:1u#9724))  <-- capture
+```
 
 Try this code:
 
+```
 (defun memory-written (a x)
             (declare (advice :before memory-write))
             (msg "write $x to $a"))
@@ -24,3 +27,5 @@ Try this code:
           (when (= addr '0x4012DC)
 	  (memory-written _ ZF)
             (msg "pc-changed($0) was called" addr)))
+```
+
