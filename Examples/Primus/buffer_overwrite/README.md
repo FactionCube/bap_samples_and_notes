@@ -1,1 +1,3 @@
+My experimentations with simple Primus Lisp commands.
+
 This code shows how to over-write a buffer using Primus. Signals for PC, ZF, R8 and RDI are collected.  I also fiddled a bit with greedy/promiscuous in primus, to see what effect that has on the incidents file.  For some reason I didn't get the whole ouput I expected when promiscuous was switched off (I thought I could then run the program without being forced to explore every branch, but the program did not run as far as I thought it might, and I couldn't get it to do so, although it was then more deterministic, as expected). 
