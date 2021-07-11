@@ -1,0 +1,1312 @@
+
+Disassembly of section .init
+
+401000: <_init>
+401000:
+401000: endbr64
+{
+  bap:call(endbr)
+}
+401004:
+401004: subq $0x8, %rsp
+{
+  #80 := RSP
+  RSP := RSP - 8
+  CF := #80 < 8
+  OF := high:1[(#80 ^ 8) & (#80 ^ RSP)]
+  AF := 0x10 = (0x10 & (RSP ^ #80 ^ 8))
+  PF :=
+    ~low:1[let $1 = RSP >> 4 ^ RSP in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RSP]
+  ZF := 0 = RSP
+}
+401008: movq 0x2fe9(%rip), %rax
+{
+  RAX := mem[0x403FF8, el]:u64
+}
+40100f: testq %rax, %rax
+{
+  #83 := RAX
+  OF := 0
+  CF := 0
+  AF := unknown[bits]:u1
+  PF :=
+    ~low:1[let $1 = #83 >> 4 ^ #83 in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[#83]
+  ZF := 0 = #83
+}
+401012: je 0x2
+{
+  if (ZF) {
+    jmp 0x401016
+  }
+}
+401014:
+401014: callq *%rax
+{
+  #89 := RAX
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x401016
+  jmp #89
+}
+401016:
+401016: addq $0x8, %rsp
+{
+  #85 := RSP
+  RSP := RSP + 8
+  CF := RSP < #85
+  OF := ~high:1[#85] & (high:1[#85] | high:1[RSP]) &
+    ~(high:1[#85] & high:1[RSP])
+  AF := 0x10 = (0x10 & (RSP ^ #85 ^ 8))
+  PF :=
+    ~low:1[let $1 = RSP >> 4 ^ RSP in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RSP]
+  ZF := 0 = RSP
+}
+40101a: retq
+{
+  #88 := mem[RSP, el]:u64
+  RSP := RSP + 8
+  jmp #88
+}
+
+Disassembly of section .plt
+
+401020: <.plt>
+401020:
+401020: pushq 0x2fe2(%rip)
+{
+  #75 := mem[0x404008, el]:u64
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- #75
+}
+401026: jmpq *0x2fe4(%rip)
+{
+  jmp (mem[0x404010, el]:u64)
+}
+
+401030: <putchar>
+401030:
+401030: jmpq *0x2fe2(%rip)
+{
+  bap:call(putchar:external)
+}
+401036:
+401036: pushq $0x0
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0
+}
+40103b: jmp -0x20
+{
+  jmp 0x401020
+}
+
+401040: <printf>
+401040:
+401040: jmpq *0x2fda(%rip)
+{
+  bap:call(printf:external)
+}
+401046:
+401046: pushq $0x1
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 1
+}
+40104b: jmp -0x30
+{
+  jmp 0x401020
+}
+
+401050: <memset>
+401050:
+401050: jmpq *0x2fd2(%rip)
+{
+  bap:call(memset:external)
+}
+401056:
+401056: pushq $0x2
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 2
+}
+40105b: jmp -0x40
+{
+  jmp 0x401020
+}
+
+401060: <memcpy>
+401060:
+401060: jmpq *0x2fca(%rip)
+{
+  bap:call(memcpy:external)
+}
+401066:
+401066: pushq $0x3
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 3
+}
+40106b: jmp -0x50
+{
+  jmp 0x401020
+}
+
+Disassembly of section .text
+
+401070: <_start>
+401070:
+401070: endbr64
+{
+  bap:call(endbr)
+}
+401074:
+401074: xorl %ebp, %ebp
+{
+  RBP := 0
+  AF := unknown[bits]:u1
+  ZF := 1
+  PF := 1
+  OF := 0
+  CF := 0
+  SF := 0
+}
+401076: movq %rdx, %r9
+{
+  R9 := RDX
+}
+401079: popq %rsi
+{
+  RSI := mem[RSP, el]:u64
+  RSP := RSP + 8
+}
+40107a: movq %rsp, %rdx
+{
+  RDX := RSP
+}
+40107d: andq $-0x10, %rsp
+{
+  RSP := RSP & 0xFFFFFFFFFFFFFFF0
+  OF := 0
+  CF := 0
+  AF := unknown[bits]:u1
+  PF :=
+    ~low:1[let $1 = RSP >> 4 ^ RSP in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RSP]
+  ZF := 0 = RSP
+}
+401081: pushq %rax
+{
+  #9 := RAX
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- #9
+}
+401082: pushq %rsp
+{
+  #10 := RSP
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- #10
+}
+401083: movq $0x401410, %r8
+{
+  R8 := 0x401410
+}
+40108a: movq $0x4013a0, %rcx
+{
+  RCX := 0x4013A0
+}
+401091: movq $0x401160, %rdi
+{
+  RDI := 0x401160
+}
+401098: callq *0x2f52(%rip)
+{
+  #11 := mem[0x403FF0, el]:u64
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x40109E
+  bap:call(__libc_start_main)
+}
+40109e:
+40109e: #undefined
+{
+  
+}
+40109f: #undefined
+{
+  
+}
+
+4010a0: <_dl_relocate_static_pie>
+4010a0:
+4010a0: endbr64
+{
+  bap:call(endbr)
+}
+4010a4:
+4010a4: retq
+{
+  #12 := mem[RSP, el]:u64
+  RSP := RSP + 8
+  jmp #12
+}
+
+4010b0: <deregister_tm_clones>
+4010b0:
+4010b0: movl $0x404048, %eax
+{
+  RAX := 0x404048
+}
+4010b5: cmpq $0x404048, %rax
+{
+  #13 := RAX - 0x404048
+  CF := RAX < 0x404048
+  OF := high:1[(RAX ^ 0x404048) & (RAX ^ #13)]
+  AF := 0x10 = (0x10 & (#13 ^ RAX ^ 0x404048))
+  PF :=
+    ~low:1[let $1 = #13 >> 4 ^ #13 in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[#13]
+  ZF := 0 = #13
+}
+4010bb: je 0x13
+{
+  if (ZF) {
+    jmp 0x4010D0
+  }
+}
+4010bd:
+4010bd: movl $0x0, %eax
+{
+  RAX := 0
+}
+4010c2: testq %rax, %rax
+{
+  #73 := RAX
+  OF := 0
+  CF := 0
+  AF := unknown[bits]:u1
+  PF :=
+    ~low:1[let $1 = #73 >> 4 ^ #73 in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[#73]
+  ZF := 0 = #73
+}
+4010c5: je 0x9
+{
+  if (ZF) {
+    jmp 0x4010D0
+  }
+}
+4010c7:
+4010c7: movl $0x404048, %edi
+{
+  RDI := 0x404048
+}
+4010cc: jmpq *%rax
+{
+  jmp RAX
+}
+4010d0:
+4010d0: retq
+{
+  #15 := mem[RSP, el]:u64
+  RSP := RSP + 8
+  jmp #15
+}
+
+4010e0: <register_tm_clones>
+4010e0:
+4010e0: movl $0x404048, %esi
+{
+  RSI := 0x404048
+}
+4010e5: subq $0x404048, %rsi
+{
+  #16 := RSI
+  RSI := RSI - 0x404048
+  CF := #16 < 0x404048
+  OF := high:1[(#16 ^ 0x404048) & (#16 ^ RSI)]
+  AF := 0x10 = (0x10 & (RSI ^ #16 ^ 0x404048))
+  PF :=
+    ~low:1[let $1 = RSI >> 4 ^ RSI in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RSI]
+  ZF := 0 = RSI
+}
+4010ec: movq %rsi, %rax
+{
+  RAX := RSI
+}
+4010ef: shrq $0x3f, %rsi
+{
+  #19 := RSI
+  RSI := RSI >> 0x3F
+  CF := high:1[#19 << 1]
+  SF := high:1[RSI]
+  ZF := 0 = RSI
+  PF :=
+    ~low:1[let $1 = RSI >> 4 ^ RSI in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  AF := unknown[bits]:u1
+  OF := unknown[bits]:u1
+}
+4010f3: sarq $0x3, %rax
+{
+  #21 := RAX
+  RAX := RAX ~>> 3
+  CF := high:1[#21 << 0x3D]
+  SF := high:1[RAX]
+  ZF := 0 = RAX
+  PF :=
+    ~low:1[let $1 = RAX >> 4 ^ RAX in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  AF := unknown[bits]:u1
+  OF := unknown[bits]:u1
+}
+4010f7: addq %rax, %rsi
+{
+  #23 := RSI
+  #24 := RAX
+  RSI := RSI + #24
+  CF := RSI < #23
+  OF := high:1[#23] = high:1[#24] & (high:1[#23] | high:1[RSI]) &
+    ~(high:1[#23] & high:1[RSI])
+  AF := 0x10 = (0x10 & (RSI ^ #23 ^ #24))
+  PF :=
+    ~low:1[let $1 = RSI >> 4 ^ RSI in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RSI]
+  ZF := 0 = RSI
+}
+4010fa: sarq %rsi
+{
+  #26 := RSI
+  RSI := RSI ~>> 1
+  CF := high:1[#26 << 0x3F]
+  SF := high:1[RSI]
+  ZF := 0 = RSI
+  PF :=
+    ~low:1[let $1 = RSI >> 4 ^ RSI in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  AF := unknown[bits]:u1
+  OF := 0
+}
+4010fd: je 0x11
+{
+  if (ZF) {
+    jmp 0x401110
+  }
+}
+4010ff:
+4010ff: movl $0x0, %eax
+{
+  RAX := 0
+}
+401104: testq %rax, %rax
+{
+  #71 := RAX
+  OF := 0
+  CF := 0
+  AF := unknown[bits]:u1
+  PF :=
+    ~low:1[let $1 = #71 >> 4 ^ #71 in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[#71]
+  ZF := 0 = #71
+}
+401107: je 0x7
+{
+  if (ZF) {
+    jmp 0x401110
+  }
+}
+401109:
+401109: movl $0x404048, %edi
+{
+  RDI := 0x404048
+}
+40110e: jmpq *%rax
+{
+  jmp RAX
+}
+401110:
+401110: retq
+{
+  #28 := mem[RSP, el]:u64
+  RSP := RSP + 8
+  jmp #28
+}
+
+401120: <__do_global_dtors_aux>
+401120:
+401120: endbr64
+{
+  bap:call(endbr)
+}
+401124:
+401124: cmpb $0x0, 0x2f1d(%rip)
+{
+  #29 := mem[0x404048]
+  CF := mem[0x404048] < 0
+  OF := high:1[mem[0x404048] & (mem[0x404048] ^ #29)]
+  AF := 0x10 = (0x10 & (#29 ^ mem[0x404048]))
+  PF :=
+    ~low:1[let $1 = #29 >> 4 ^ #29 in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[#29]
+  ZF := 0 = #29
+}
+40112b: jne 0x13
+{
+  if (~ZF) {
+    jmp 0x401140
+  }
+}
+40112d:
+40112d: pushq %rbp
+{
+  #69 := RBP
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- #69
+}
+40112e: movq %rsp, %rbp
+{
+  RBP := RSP
+}
+401131: callq -0x86
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x401136
+  jmp 0x4010B0
+}
+401136:
+401136: movb $0x1, 0x2f0b(%rip)
+{
+  mem := mem with [0x404048] <- 1
+}
+40113d: popq %rbp
+{
+  RBP := mem[RSP, el]:u64
+  RSP := RSP + 8
+}
+40113e: retq
+{
+  #70 := mem[RSP, el]:u64
+  RSP := RSP + 8
+  jmp #70
+}
+401140:
+401140: retq
+{
+  #31 := mem[RSP, el]:u64
+  RSP := RSP + 8
+  jmp #31
+}
+
+401150: <frame_dummy>
+401150:
+401150: endbr64
+{
+  bap:call(endbr)
+}
+401154:
+401154: jmp -0x76
+{
+  jmp 0x4010E0
+}
+
+401160: <main>
+401160:
+401160: pushq %rbp
+{
+  #32 := RBP
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- #32
+}
+401161: movq %rsp, %rbp
+{
+  RBP := RSP
+}
+401164: subq $0x110, %rsp
+{
+  #33 := RSP
+  RSP := RSP - 0x110
+  CF := #33 < 0x110
+  OF := high:1[(#33 ^ 0x110) & (#33 ^ RSP)]
+  AF := 0x10 = (0x10 & (RSP ^ #33 ^ 0x110))
+  PF :=
+    ~low:1[let $1 = RSP >> 4 ^ RSP in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RSP]
+  ZF := 0 = RSP
+}
+40116b: leaq -0xc0(%rbp), %rax
+{
+  RAX := low:64[RBP - 0xC0]
+}
+401172: leaq -0x80(%rbp), %rcx
+{
+  RCX := low:64[RBP - 0x80]
+}
+401176: xorl %esi, %esi
+{
+  RSI := 0
+  AF := unknown[bits]:u1
+  ZF := 1
+  PF := 1
+  OF := 0
+  CF := 0
+  SF := 0
+}
+401178: movl $0x0, -0x4(%rbp)
+{
+  mem := mem with [RBP - 4, el]:u32 <- 0
+}
+40117f: leaq -0x40(%rbp), %rdx
+{
+  RDX := low:64[RBP - 0x40]
+}
+401183: movq %rdx, %rdi
+{
+  RDI := RDX
+}
+401186: movl $0x38, %edx
+{
+  RDX := 0x38
+}
+40118b: movq %rdx, -0xd0(%rbp)
+{
+  mem := mem with [RBP - 0xD0, el]:u64 <- RDX
+}
+401192: movq %rax, -0xd8(%rbp)
+{
+  mem := mem with [RBP - 0xD8, el]:u64 <- RAX
+}
+401199: movq %rcx, -0xe0(%rbp)
+{
+  mem := mem with [RBP - 0xE0, el]:u64 <- RCX
+}
+4011a0: callq -0x155
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x4011A5
+  jmp 0x401050
+}
+4011a5:
+4011a5: movq -0xe0(%rbp), %rax
+{
+  RAX := mem[RBP - 0xE0, el]:u64
+}
+4011ac: movq %rax, %rdi
+{
+  RDI := RAX
+}
+4011af: movabsq $0x402010, %rsi
+{
+  RSI := 0x402010
+}
+4011b9: movq -0xd0(%rbp), %rdx
+{
+  RDX := mem[RBP - 0xD0, el]:u64
+}
+4011c0: callq -0x165
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x4011C5
+  jmp 0x401060
+}
+4011c5:
+4011c5: movq $0x0, -0x88(%rbp)
+{
+  mem := mem with [RBP - 0x88, el]:u64 <- 0
+}
+4011d0: movq -0xe0(%rbp), %rax
+{
+  RAX := mem[RBP - 0xE0, el]:u64
+}
+4011d7: movq %rax, -0x88(%rbp)
+{
+  mem := mem with [RBP - 0x88, el]:u64 <- RAX
+}
+4011de: movq -0xd8(%rbp), %rax
+{
+  RAX := mem[RBP - 0xD8, el]:u64
+}
+4011e5: movq %rax, %rdi
+{
+  RDI := RAX
+}
+4011e8: movl $0xff, %esi
+{
+  RSI := 0xFF
+}
+4011ed: movq -0xd0(%rbp), %rdx
+{
+  RDX := mem[RBP - 0xD0, el]:u64
+}
+4011f4: callq -0x1a9
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x4011F9
+  jmp 0x401050
+}
+4011f9:
+4011f9: movq $0x0, -0xc8(%rbp)
+{
+  mem := mem with [RBP - 0xC8, el]:u64 <- 0
+}
+401204: movq -0xd8(%rbp), %rax
+{
+  RAX := mem[RBP - 0xD8, el]:u64
+}
+40120b: movq %rax, -0xc8(%rbp)
+{
+  mem := mem with [RBP - 0xC8, el]:u64 <- RAX
+}
+401212: movq -0x88(%rbp), %rsi
+{
+  RSI := mem[RBP - 0x88, el]:u64
+}
+401219: movabsq $0x402048, %rdi
+{
+  RDI := 0x402048
+}
+401223: movb $0x0, %al
+{
+  RAX := high:56[RAX].0
+}
+401225: callq -0x1ea
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x40122A
+  jmp 0x401040
+}
+40122a:
+40122a: movq -0x88(%rbp), %rcx
+{
+  RCX := mem[RBP - 0x88, el]:u64
+}
+401231: movzwl (%rcx), %esi
+{
+  RSI := pad:64[pad:32[mem[RCX, el]:u16]]
+}
+401234: movabsq $0x40205b, %rdi
+{
+  RDI := 0x40205B
+}
+40123e: movl %eax, -0xe4(%rbp)
+{
+  mem := mem with [RBP - 0xE4, el]:u32 <- low:32[RAX]
+}
+401244: movb $0x0, %al
+{
+  RAX := high:56[RAX].0
+}
+401246: callq -0x20b
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x40124B
+  jmp 0x401040
+}
+40124b:
+40124b: movq -0x88(%rbp), %rcx
+{
+  RCX := mem[RBP - 0x88, el]:u64
+}
+401252: movl 0x4(%rcx), %esi
+{
+  RSI := pad:64[mem[RCX + 4, el]:u32]
+}
+401255: movabsq $0x402071, %rdi
+{
+  RDI := 0x402071
+}
+40125f: movl %eax, -0xe8(%rbp)
+{
+  mem := mem with [RBP - 0xE8, el]:u32 <- low:32[RAX]
+}
+401265: movb $0x0, %al
+{
+  RAX := high:56[RAX].0
+}
+401267: callq -0x22c
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x40126C
+  jmp 0x401040
+}
+40126c:
+40126c: movq -0xc8(%rbp), %rsi
+{
+  RSI := mem[RBP - 0xC8, el]:u64
+}
+401273: movabsq $0x402087, %rdi
+{
+  RDI := 0x402087
+}
+40127d: movl %eax, -0xec(%rbp)
+{
+  mem := mem with [RBP - 0xEC, el]:u32 <- low:32[RAX]
+}
+401283: movb $0x0, %al
+{
+  RAX := high:56[RAX].0
+}
+401285: callq -0x24a
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x40128A
+  jmp 0x401040
+}
+40128a:
+40128a: movq -0xc8(%rbp), %rcx
+{
+  RCX := mem[RBP - 0xC8, el]:u64
+}
+401291: movzwl (%rcx), %esi
+{
+  RSI := pad:64[pad:32[mem[RCX, el]:u16]]
+}
+401294: movabsq $0x40209b, %rdi
+{
+  RDI := 0x40209B
+}
+40129e: movl %eax, -0xf0(%rbp)
+{
+  mem := mem with [RBP - 0xF0, el]:u32 <- low:32[RAX]
+}
+4012a4: movb $0x0, %al
+{
+  RAX := high:56[RAX].0
+}
+4012a6: callq -0x26b
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x4012AB
+  jmp 0x401040
+}
+4012ab:
+4012ab: movq -0xc8(%rbp), %rcx
+{
+  RCX := mem[RBP - 0xC8, el]:u64
+}
+4012b2: movl 0x4(%rcx), %esi
+{
+  RSI := pad:64[mem[RCX + 4, el]:u32]
+}
+4012b5: movabsq $0x4020b2, %rdi
+{
+  RDI := 0x4020B2
+}
+4012bf: movl %eax, -0xf4(%rbp)
+{
+  mem := mem with [RBP - 0xF4, el]:u32 <- low:32[RAX]
+}
+4012c5: movb $0x0, %al
+{
+  RAX := high:56[RAX].0
+}
+4012c7: callq -0x28c
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x4012CC
+  jmp 0x401040
+}
+4012cc:
+4012cc: movq -0xc8(%rbp), %rcx
+{
+  RCX := mem[RBP - 0xC8, el]:u64
+}
+4012d3: movzwl (%rcx), %esi
+{
+  RSI := pad:64[pad:32[mem[RCX, el]:u16]]
+}
+4012d6: movl $0xc4, %r8d
+{
+  R8 := 0xC4
+}
+4012dc: cmpl %esi, %r8d
+{
+  #36 := low:32[R8] - low:32[RSI]
+  CF := low:32[R8] < low:32[RSI]
+  OF := high:1[(low:32[R8] ^ low:32[RSI]) & (low:32[R8] ^ #36)]
+  AF := 0x10 = (0x10 & (#36 ^ low:32[R8] ^ low:32[RSI]))
+  PF :=
+    ~low:1[let $1 = #36 >> 4 ^ #36 in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[#36]
+  ZF := 0 = #36
+}
+4012df: jne 0x1f
+{
+  if (~ZF) {
+    jmp 0x401304
+  }
+}
+4012e5:
+4012e5: movl $0x41, %edi
+{
+  RDI := 0x41
+}
+4012ea: callq -0x2bf
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x4012EF
+  jmp 0x401030
+}
+4012ef:
+4012ef: movl $0xa, %edi
+{
+  RDI := 0xA
+}
+4012f4: movl %eax, -0xf8(%rbp)
+{
+  mem := mem with [RBP - 0xF8, el]:u32 <- low:32[RAX]
+}
+4012fa: callq -0x2cf
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x4012FF
+  jmp 0x401030
+}
+4012ff:
+4012ff: jmp 0x26
+{
+  jmp 0x40132A
+}
+401304:
+401304: movl $0x2a, %edi
+{
+  RDI := 0x2A
+}
+401309: callq -0x2de
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x40130E
+  jmp 0x401030
+}
+40130e:
+40130e: movl $0xa, %edi
+{
+  RDI := 0xA
+}
+401313: movl %eax, -0xfc(%rbp)
+{
+  mem := mem with [RBP - 0xFC, el]:u32 <- low:32[RAX]
+}
+401319: callq -0x2ee
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x40131E
+  jmp 0x401030
+}
+40131e:
+40131e: movl $0xffffffff, -0x4(%rbp)
+{
+  mem := mem with [RBP - 4, el]:u32 <- 0xFFFFFFFF
+}
+401325: jmp 0x61
+{
+  jmp 0x40138B
+}
+40132a:
+40132a: movq -0xc8(%rbp), %rax
+{
+  RAX := mem[RBP - 0xC8, el]:u64
+}
+401331: movl $0xfadeed00, %ecx
+{
+  RCX := 0xFADEED00
+}
+401336: cmpl 0x4(%rax), %ecx
+{
+  #67 := low:32[RCX] - mem[RAX + 4, el]:u32
+  CF := low:32[RCX] < mem[RAX + 4, el]:u32
+  OF := high:1[(low:32[RCX] ^ mem[RAX + 4, el]:u32) & (low:32[RCX] ^ #67)]
+  AF := 0x10 = (0x10 & (#67 ^ low:32[RCX] ^ mem[RAX + 4, el]:u32))
+  PF :=
+    ~low:1[let $1 = #67 >> 4 ^ #67 in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[#67]
+  ZF := 0 = #67
+}
+401339: jne 0x1f
+{
+  if (~ZF) {
+    jmp 0x40135E
+  }
+}
+40133f:
+40133f: movl $0x41, %edi
+{
+  RDI := 0x41
+}
+401344: callq -0x319
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x401349
+  jmp 0x401030
+}
+401349:
+401349: movl $0xa, %edi
+{
+  RDI := 0xA
+}
+40134e: movl %eax, -0x100(%rbp)
+{
+  mem := mem with [RBP - 0x100, el]:u32 <- low:32[RAX]
+}
+401354: callq -0x329
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x401359
+  jmp 0x401030
+}
+401359:
+401359: jmp 0x26
+{
+  jmp 0x401384
+}
+40135e:
+40135e: movl $0x2a, %edi
+{
+  RDI := 0x2A
+}
+401363: callq -0x338
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x401368
+  jmp 0x401030
+}
+401368:
+401368: movl $0xa, %edi
+{
+  RDI := 0xA
+}
+40136d: movl %eax, -0x104(%rbp)
+{
+  mem := mem with [RBP - 0x104, el]:u32 <- low:32[RAX]
+}
+401373: callq -0x348
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x401378
+  jmp 0x401030
+}
+401378:
+401378: movl $0xffffffff, -0x4(%rbp)
+{
+  mem := mem with [RBP - 4, el]:u32 <- 0xFFFFFFFF
+}
+40137f: jmp 0x7
+{
+  jmp 0x40138B
+}
+401384:
+401384: movl $0x0, -0x4(%rbp)
+{
+  mem := mem with [RBP - 4, el]:u32 <- 0
+}
+40138b:
+40138b: movl -0x4(%rbp), %eax
+{
+  RAX := pad:64[mem[RBP - 4, el]:u32]
+}
+40138e: addq $0x110, %rsp
+{
+  #38 := RSP
+  RSP := RSP + 0x110
+  CF := RSP < #38
+  OF := ~high:1[#38] & (high:1[#38] | high:1[RSP]) &
+    ~(high:1[#38] & high:1[RSP])
+  AF := 0x10 = (0x10 & (RSP ^ #38 ^ 0x110))
+  PF :=
+    ~low:1[let $1 = RSP >> 4 ^ RSP in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RSP]
+  ZF := 0 = RSP
+}
+401395: popq %rbp
+{
+  RBP := mem[RSP, el]:u64
+  RSP := RSP + 8
+}
+401396: retq
+{
+  #41 := mem[RSP, el]:u64
+  RSP := RSP + 8
+  jmp #41
+}
+
+4013a0: <__libc_csu_init>
+4013a0:
+4013a0: endbr64
+{
+  bap:call(endbr)
+}
+4013a4:
+4013a4: pushq %r15
+{
+  #42 := R15
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- #42
+}
+4013a6: leaq 0x2a63(%rip), %r15
+{
+  R15 := 0x403E10
+}
+4013ad: pushq %r14
+{
+  #43 := R14
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- #43
+}
+4013af: movq %rdx, %r14
+{
+  R14 := RDX
+}
+4013b2: pushq %r13
+{
+  #44 := R13
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- #44
+}
+4013b4: movq %rsi, %r13
+{
+  R13 := RSI
+}
+4013b7: pushq %r12
+{
+  #45 := R12
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- #45
+}
+4013b9: movl %edi, %r12d
+{
+  R12 := pad:64[low:32[RDI]]
+}
+4013bc: pushq %rbp
+{
+  #46 := RBP
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- #46
+}
+4013bd: leaq 0x2a54(%rip), %rbp
+{
+  RBP := 0x403E18
+}
+4013c4: pushq %rbx
+{
+  #47 := RBX
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- #47
+}
+4013c5: subq %r15, %rbp
+{
+  #48 := RBP
+  #49 := R15
+  RBP := RBP - R15
+  CF := #48 < #49
+  OF := high:1[(#48 ^ #49) & (#48 ^ RBP)]
+  AF := 0x10 = (0x10 & (RBP ^ #48 ^ #49))
+  PF :=
+    ~low:1[let $1 = RBP >> 4 ^ RBP in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RBP]
+  ZF := 0 = RBP
+}
+4013c8: subq $0x8, %rsp
+{
+  #51 := RSP
+  RSP := RSP - 8
+  CF := #51 < 8
+  OF := high:1[(#51 ^ 8) & (#51 ^ RSP)]
+  AF := 0x10 = (0x10 & (RSP ^ #51 ^ 8))
+  PF :=
+    ~low:1[let $1 = RSP >> 4 ^ RSP in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RSP]
+  ZF := 0 = RSP
+}
+4013cc: callq -0x3d1
+{
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x4013D1
+  jmp 0x401000
+}
+4013d1:
+4013d1: sarq $0x3, %rbp
+{
+  #54 := RBP
+  RBP := RBP ~>> 3
+  CF := high:1[#54 << 0x3D]
+  SF := high:1[RBP]
+  ZF := 0 = RBP
+  PF :=
+    ~low:1[let $1 = RBP >> 4 ^ RBP in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  AF := unknown[bits]:u1
+  OF := unknown[bits]:u1
+}
+4013d5: je 0x1f
+{
+  if (ZF) {
+    jmp 0x4013F6
+  }
+}
+4013d7:
+4013d7: xorl %ebx, %ebx
+{
+  RBX := 0
+  AF := unknown[bits]:u1
+  ZF := 1
+  PF := 1
+  OF := 0
+  CF := 0
+  SF := 0
+}
+4013d9: #undefined
+{
+  
+}
+4013e0:
+4013e0: movq %r14, %rdx
+{
+  RDX := R14
+}
+4013e3: movq %r13, %rsi
+{
+  RSI := R13
+}
+4013e6: movl %r12d, %edi
+{
+  RDI := pad:64[low:32[R12]]
+}
+4013e9: callq *(%r15,%rbx,8)
+{
+  #61 := mem[R15 + (RBX << 3), el]:u64
+  RSP := RSP - 8
+  mem := mem with [RSP, el]:u64 <- 0x4013ED
+  jmp #61
+}
+4013ed:
+4013ed: addq $0x1, %rbx
+{
+  #62 := RBX
+  RBX := RBX + 1
+  CF := RBX < #62
+  OF := ~high:1[#62] & (high:1[#62] | high:1[RBX]) &
+    ~(high:1[#62] & high:1[RBX])
+  AF := 0x10 = (0x10 & (RBX ^ #62 ^ 1))
+  PF :=
+    ~low:1[let $1 = RBX >> 4 ^ RBX in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RBX]
+  ZF := 0 = RBX
+}
+4013f1: cmpq %rbx, %rbp
+{
+  #65 := RBP - RBX
+  CF := RBP < RBX
+  OF := high:1[(RBP ^ RBX) & (RBP ^ #65)]
+  AF := 0x10 = (0x10 & (#65 ^ RBP ^ RBX))
+  PF :=
+    ~low:1[let $1 = #65 >> 4 ^ #65 in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[#65]
+  ZF := 0 = #65
+}
+4013f4: jne -0x16
+{
+  if (~ZF) {
+    jmp 0x4013E0
+  }
+}
+4013f6:
+4013f6: addq $0x8, %rsp
+{
+  #56 := RSP
+  RSP := RSP + 8
+  CF := RSP < #56
+  OF := ~high:1[#56] & (high:1[#56] | high:1[RSP]) &
+    ~(high:1[#56] & high:1[RSP])
+  AF := 0x10 = (0x10 & (RSP ^ #56 ^ 8))
+  PF :=
+    ~low:1[let $1 = RSP >> 4 ^ RSP in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RSP]
+  ZF := 0 = RSP
+}
+4013fa: popq %rbx
+{
+  RBX := mem[RSP, el]:u64
+  RSP := RSP + 8
+}
+4013fb: popq %rbp
+{
+  RBP := mem[RSP, el]:u64
+  RSP := RSP + 8
+}
+4013fc: popq %r12
+{
+  R12 := mem[RSP, el]:u64
+  RSP := RSP + 8
+}
+4013fe: popq %r13
+{
+  R13 := mem[RSP, el]:u64
+  RSP := RSP + 8
+}
+401400: popq %r14
+{
+  R14 := mem[RSP, el]:u64
+  RSP := RSP + 8
+}
+401402: popq %r15
+{
+  R15 := mem[RSP, el]:u64
+  RSP := RSP + 8
+}
+401404: retq
+{
+  #59 := mem[RSP, el]:u64
+  RSP := RSP + 8
+  jmp #59
+}
+
+401410: <__libc_csu_fini>
+401410:
+401410: endbr64
+{
+  bap:call(endbr)
+}
+401414:
+401414: retq
+{
+  #60 := mem[RSP, el]:u64
+  RSP := RSP + 8
+  jmp #60
+}
+
+Disassembly of section .fini
+
+401418: <_fini>
+401418:
+401418: endbr64
+{
+  bap:call(endbr)
+}
+40141c:
+40141c: subq $0x8, %rsp
+{
+  #1 := RSP
+  RSP := RSP - 8
+  CF := #1 < 8
+  OF := high:1[(#1 ^ 8) & (#1 ^ RSP)]
+  AF := 0x10 = (0x10 & (RSP ^ #1 ^ 8))
+  PF :=
+    ~low:1[let $1 = RSP >> 4 ^ RSP in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RSP]
+  ZF := 0 = RSP
+}
+401420: addq $0x8, %rsp
+{
+  #4 := RSP
+  RSP := RSP + 8
+  CF := RSP < #4
+  OF := ~high:1[#4] & (high:1[#4] | high:1[RSP]) &
+    ~(high:1[#4] & high:1[RSP])
+  AF := 0x10 = (0x10 & (RSP ^ #4 ^ 8))
+  PF :=
+    ~low:1[let $1 = RSP >> 4 ^ RSP in let $2 = $1 >> 2 ^ $1 in $2 >> 1 ^ $2]
+  SF := high:1[RSP]
+  ZF := 0 = RSP
+}
+401424: retq
+{
+  #7 := mem[RSP, el]:u64
+  RSP := RSP + 8
+  jmp #7
+}
