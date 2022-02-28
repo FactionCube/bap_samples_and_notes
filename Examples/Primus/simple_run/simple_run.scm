@@ -2,7 +2,6 @@
 (option run-entry-points b a )
 
 (option primus-lisp-channel-redirect
-	<stdin>:$prefix/stdin
 	<stdout>:$prefix/stdout)
 
 (option passes
@@ -16,6 +15,5 @@
 
 (option primus-print-obs
 	call
-	incident
-	incident-location)
+)
 
