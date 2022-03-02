@@ -11,7 +11,8 @@ int main () {
 	bufcpy = far_ptr;
 	
 	int i;
-	/* Should see 'ABCDEFGH' in stdout file. */
+	/* Should see 'ABCDEFGH' in stdout file when you run 'bap ./far_ptr --recipe=recipe.scm'.
+	 * Just runnin far_ptr results in a seg fault.. */
 	for (i = 0 ; i < 8; i++)
 	{
 		putchar(*(bufcpy + i));
