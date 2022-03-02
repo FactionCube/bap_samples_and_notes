@@ -6,6 +6,7 @@ loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/constant_tracker.pl
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/beagle.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_print.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_powerpc.plugin
+loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/flatten.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_mark_visited.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_limit.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_taint.plugin
@@ -35,6 +36,7 @@ loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/arm.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/callsites.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/ssa.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_wandering.plugin
+loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/patterns.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/raw.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/elf_loader.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/systemz.plugin
@@ -81,15 +83,15 @@ loader.debug> Linking library api_plugin
 loader.debug> Linking library bap_plugin_api
 loader.info> Loaded api from "/home/user/.opam/4.10.1/lib/bap/api.plugin"
 loader.debug> Loading arm from "/home/user/.opam/4.10.1/lib/bap/arm.plugin"
-loader.debug> Linking library bap-arm
 loader.debug> Linking library bap_c
+loader.debug> Linking library bap_strings
+loader.debug> Linking library bap_primus
+loader.debug> Linking library bap-arm
 loader.debug> Linking library arm_plugin
 loader.debug> Linking library bap_plugin_arm
 loader.info> Loaded arm from "/home/user/.opam/4.10.1/lib/bap/arm.plugin"
 loader.debug> Loading beagle from "/home/user/.opam/4.10.1/lib/bap/beagle.plugin"
 loader.debug> Linking library microx
-loader.debug> Linking library bap_strings
-loader.debug> Linking library bap_primus
 loader.debug> Linking library beagle_prey
 loader.debug> Linking library beagle_plugin
 loader.debug> Linking library bap_plugin_beagle
@@ -144,6 +146,7 @@ loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/constant_tracker.pl
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/beagle.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_print.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_powerpc.plugin
+loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/flatten.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_mark_visited.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_limit.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_taint.plugin
@@ -173,6 +176,7 @@ loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/arm.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/callsites.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/ssa.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_wandering.plugin
+loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/patterns.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/raw.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/elf_loader.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/systemz.plugin
@@ -217,6 +221,10 @@ loader.debug> Linking library dwarf
 loader.debug> Linking library elf_loader_plugin
 loader.debug> Linking library bap_plugin_elf_loader
 loader.info> Loaded elf-loader from "/home/user/.opam/4.10.1/lib/bap/elf_loader.plugin"
+loader.debug> Loading flatten from "/home/user/.opam/4.10.1/lib/bap/flatten.plugin"
+loader.debug> Linking library flatten_plugin
+loader.debug> Linking library bap_plugin_flatten
+loader.info> Loaded flatten from "/home/user/.opam/4.10.1/lib/bap/flatten.plugin"
 loader.debug> Loading frontc-parser from "/home/user/.opam/4.10.1/lib/bap/frontc_parser.plugin"
 loader.debug> Linking library FrontC
 loader.debug> Linking library frontc_parser_plugin
@@ -253,6 +261,11 @@ loader.debug> Loading optimization from "/home/user/.opam/4.10.1/lib/bap/optimiz
 loader.debug> Linking library optimization_plugin
 loader.debug> Linking library bap_plugin_optimization
 loader.info> Loaded optimization from "/home/user/.opam/4.10.1/lib/bap/optimization.plugin"
+loader.debug> Loading patterns from "/home/user/.opam/4.10.1/lib/bap/patterns.plugin"
+loader.debug> Linking library xmlm
+loader.debug> Linking library patterns_plugin
+loader.debug> Linking library bap_plugin_patterns
+loader.info> Loaded patterns from "/home/user/.opam/4.10.1/lib/bap/patterns.plugin"
 loader.debug> Loading powerpc from "/home/user/.opam/4.10.1/lib/bap/powerpc.plugin"
 loader.debug> Linking library bap-powerpc
 loader.debug> Linking library powerpc_plugin
@@ -436,6 +449,7 @@ loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/constant_tracker.pl
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/beagle.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_print.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_powerpc.plugin
+loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/flatten.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_mark_visited.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_limit.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_taint.plugin
@@ -465,6 +479,7 @@ loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/arm.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/callsites.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/ssa.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/primus_wandering.plugin
+loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/patterns.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/raw.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/elf_loader.plugin
 loader.debug> Opening bundle /home/user/.opam/4.10.1/lib/bap/systemz.plugin
@@ -507,17 +522,16 @@ primus-print.info> monitoring lisp-message
 primus-print.info> monitoring call-return
 primus-print.info> monitoring call
 powerpc.info> Providing PowerPC semantics in BIL
-cache.warning> Failed to read config file: ("Unix.Unix_error(Unix.ENOENT, \"open\", \"/home/user/.cache/bap/config.3\")")
-cache.info> caching to /home/user/.cache/bap
 disassemble.info> Setting GC parameters
-disassemble.info> looking for knowledge with digest b3a2ceff695e291d3176be3caee9e407
+disassemble.info> looking for knowledge with digest bb4e79c2c93eb3ebd7728a2865ddeb6a
 bap.warning> region ((addr 0x404030:64u) (size 8)) is not mapped to memory
 bap.warning> region ((addr 0:64u) (size 73)) is not mapped to memory
 bap.warning> region ((addr 0:64u) (size 1464)) is not mapped to memory
 bap.warning> region ((addr 0:64u) (size 462)) is not mapped to memory
 bap.warning> region ((addr 0:64u) (size 259)) is not mapped to memory
 bap.warning> ("memory has intersections" 0x401000:64u)
-bap.info> providing rooter and symbolizer from image of (./a.out)
+bap.info> the symbol at 0x0 has ambiguous names: __libc_start_main, putchar
+
 objdump.info> `/usr/bin/arm-linux-gnueabi-objdump -rd --no-show-raw-insn -C "./a.out"' has failed with 1
 objdump.info> `/usr/bin/mips64el-linux-gnuabi64-objdump -rd --no-show-raw-insn -C "./a.out"' has failed with 1
 objdump.info> `/usr/bin/powerpc-linux-gnu-objdump -rd --no-show-raw-insn -C "./a.out"' has failed with 1
@@ -539,6 +553,8 @@ objdump.info> 0x401130 => main
 objdump.info> 0x401190 => __libc_csu_init
 objdump.info> 0x401200 => __libc_csu_fini
 objdump.info> 0x401208 => _fini
+bap.info> the symbol at 0x0 has ambiguous names: __libc_start_main, putchar
+
 x86.info> can't detect ABI, falling back to default
 x86.info> using sysv ABI
 trivial-condition-form.info> translating the program into the Trivial Condition Form (TCF)
@@ -549,29 +565,27 @@ x86.info> applying sysv to __libc_csu_init
 x86.info> applying sysv to _dl_relocate_static_pie
 x86.info> applying sysv to _fini
 x86.info> applying sysv to _init
-x86.info> applying sysv to _start
 x86.info> applying sysv to deregister_tm_clones
+x86.info> applying sysv to endbr
 x86.info> applying sysv to frame_dummy
 x86.info> applying sysv to main
 x86.info> applying sysv to putchar
 x86.info> applying sysv to register_tm_clones
-x86.info> applying sysv to endbr
+x86.info> applying sysv to sub_4010fd
 x86.info> applying sysv to __libc_start_main
 x86.info> applying sysv to putchar:external
 primus-lisp.info> redirecting fd 2 to ./stderr
 primus-lisp.info> redirecting fd 0 to ./stdin
 primus-lisp.info> redirecting fd 1 to ./stdout
-primus-lisp.info> Woot  p: 0x404040  *far_ptr*: 0x3FFFFFF0 *buf_ptr*: 0x3FFFFFE8
-primus-lisp.info> *buf_ptr* now has 0xB
-primus-lisp.info> *buf_ptr* now has 0xB
 primus-lisp.info> *malloc_ptr* now has 0x41
-primus-lisp.info> >>>>  0x404047 0x4847464544434241
+primus-lisp.info> >>>>  0x4040E0 0x4847464544434241
 run.info> Fork 1: starting from the main entry point
-primus-lisp.info> WRITTEN #<RAX 0x26> 0x180000 
-run.info> execution from main terminated with: unbound function 0 
+primus-lisp.info> WRITTEN #<RAX 3> 0x180000 
+primus-limit.info> terminating machine 1 because a maximum number of clocks has been reached
+run.info> execution from main terminated with: Halt 
 primus-greedy.info> switch to machine 0 from 1
 primus-greedy.info> killing previous machine 1
 run.info> all toplevel machines done, halting
 primus-greedy.info> no more pending machines
 run.info> The job `multi-task' finished successfully
-disassemble.info> caching knowledge with digest b3a2ceff695e291d3176be3caee9e407
+disassemble.info> caching knowledge with digest bb4e79c2c93eb3ebd7728a2865ddeb6a
